@@ -1,0 +1,27 @@
+version: '3'
+services:
+  # Java 服务
+  java_gpt:
+    image: chatgpt-web-java:latest
+    container_name: java_gpt
+    environment:
+      - JDBC_URL=jdbc:mysql://121.4.80.56:3306/chat?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&serverTimezone=Asia/Shanghai
+      - MYSQL_USER_NAME=root
+      - MYSQL_PASSWORD=Chaofen0618
+      - CHAT_OPENAI_API_KEY=xxx
+      - CHAT_OPENAI_ACCESS_TOKEN=
+      - CHAT_OPENAI_API_BASE_URL=https://api.openai.com/
+      - CHAT_HTTP_PROXY_HOST:127.0.0.1
+      - EMAIL_HOST=smpt.qq.com
+      - EMAIL_PORT=465
+      - EMAIL_FROM=xxx@qq.com
+      - EMAIL_USER=xxx@qq.com
+      - EMAIL_PASS=xxx
+    ports:
+      - 9003:3002
+    restart: on-failure
+    networks:
+      gpt_network:
+
+networks:
+  gpt_network:
